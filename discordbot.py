@@ -96,9 +96,9 @@ so selecting "1" would select the top left board. the same thing applies for the
                 break
             await ext.channel.send(put)
             try:
-                print("here")
+                await ext.channel.send("here")
                 put = int(put)
-                print("and here")
+                await ext.channel.send("and here")
             except:
                 pass
             if a % 2==0:
@@ -106,13 +106,13 @@ so selecting "1" would select the top left board. the same thing applies for the
             else:
                 mark = " O "
             while isinstance(put, str) or (str(put)[0] != nM and nM != None) or all(elem not in [int(str(x)+str(y)) for x in range(1,10) for y in range(1,10)] for elem in [put]) or len(str(put)) != 2 or getattr(boardList, "bL"+str(put)[0])[boardListFunc.Func1(put)][boardListFunc.Func2(put)] != 0 or boardList.bLU[boardListFunc.FuncU1(put)][boardListFunc.FuncU2(put)] != 0 or rules.theWinner(getattr(boardList, "bL"+str(put)[0])) != 0:
-                print("why am i here?")
+                await ext.channel.send("why am i here?")
                 try:
                     if canPlayAnywhere == True:
                         if isinstance(put, str):
-                            print(board.board())
-                            print("You can play anywhere you like because your opponent sent you to a tile that was already finished!")
-                            print("You didn't type a number!")
+                            await ext.channel.send(board.board())
+                            await ext.channel.send("You can play anywhere you like because your opponent sent you to a tile that was already finished!")
+                            await ext.channel.send("You didn't type a number!")
                             await ext.channel.send("Where do you want to put your mark?")
                             put=await bot.wait_for("message", check=lambda msg: msg.author != bot.user)                       
                         try:
