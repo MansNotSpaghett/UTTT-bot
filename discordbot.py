@@ -197,4 +197,4 @@ so selecting "1" would select the top left board. the same thing applies for the
                     setattr(boardList,"bL"+str(put)[0], [[1,1,1],[1,1,1],[1,1,1]])   
                     finished.append(str(put)[0])
             canPlayAnywhere = False
-bot.run('proccess.env.BOT_TOKEN')
+bot.run(proccess.env.BOT_TOKEN)
