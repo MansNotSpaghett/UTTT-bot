@@ -100,7 +100,7 @@ so selecting "1" would select the top left board. the same thing applies for the
             if a % 2==0:
                 mark = " X "
             else:
-               mark = " O "
+                mark = " O "
             while isinstance(put, str) or (str(put)[0] != nM and nM != None) or all(elem not in [int(str(x)+str(y)) for x in range(1,10) for y in range(1,10)] for elem in [put]) or len(str(put)) != 2 or getattr(boardList, "bL"+str(put)[0])[boardListFunc.Func1(put)][boardListFunc.Func2(put)] != 0 or boardList.bLU[boardListFunc.FuncU1(put)][boardListFunc.FuncU2(put)] != 0 or rules.theWinner(getattr(boardList, "bL"+str(put)[0])) != 0:
                 print("why am i here?")
                 try:
