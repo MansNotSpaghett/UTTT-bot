@@ -3,6 +3,7 @@ from discord.ext import commands
 import asyncio
 import rules, board, boardList, boardListFunc, nextMove
 bot = commands.Bot(command_prefix="$")
+import os
 doThey=None
 O = ["/", "-","\\",
      "|", " ", "|",
@@ -197,4 +198,4 @@ so selecting "1" would select the top left board. the same thing applies for the
                     setattr(boardList,"bL"+str(put)[0], [[1,1,1],[1,1,1],[1,1,1]])   
                     finished.append(str(put)[0])
             canPlayAnywhere = False
-bot.run(proccess.env.BOT_TOKEN)
+bot.run(os.environ['BOT_TOKEN'])
