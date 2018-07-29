@@ -88,6 +88,7 @@ so selecting "1" would select the top left board. the same thing applies for the
             await ext.channel.send(put)
             put=put.content
             if put=="die":
+                await ext.channel.send("ded af")
                 for x in range(1,10):
                     for y in range(1,10):
                         setattr(board,"b"+str(x)+str(y),"   ")
