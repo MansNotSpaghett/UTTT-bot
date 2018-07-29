@@ -32,9 +32,11 @@ async def UTTT(ext,z,x=[],O=O,X=X,T=T):
         if z=="Y":
                 doThey="Y"
                 print("a")
+                UTTT.play=1
         elif z=="N":
             doThey="N"
             print("b")
+            UTTT.play=1
         else:
             doThey=None
             print("c")
@@ -53,7 +55,7 @@ so selecting "1" would select the top left board. the same thing applies for the
             await ext.channel.send("Do you know the controls? [Y/N]: ")
     #Introduction is done, time for the actual game:
     #######
-    else:
+    elif UTTT.play==1 and z=="play":
         finished=[]
         put="21"
         a = 1
@@ -84,6 +86,9 @@ so selecting "1" would select the top left board. the same thing applies for the
             await ext.channel.send("Where do you want to put your mark?")
             put=await bot.wait_for("message", check=lambda msg: msg.author != bot.user)
             ext.channel.send(put)
+            if put=="die":
+                UTTT.play=0
+                break
             put=put.content
             ext.channel.send(put)
             try:
@@ -174,12 +179,17 @@ so selecting "1" would select the top left board. the same thing applies for the
                     await ext.channel.send("What you typed wasn't what the computer expected as a place. Try again")
                     await ext.channel.send("Where do you wanna put your mark? (e.g: 99 for the right-down right-down place as in 9th TTT table and 9th place) ")
                     put=await bot.wait_for("message", check=lambda msg: msg.author != bot.user)
+                if put=="die":
+                    break
                 try:
                     put = int(put)
                 except:
                     pass
             setattr(board,"b"+str(put),mark)   
             getattr(boardList, "bL"+str(put)[0])[boardListFunc.Func1(put)][boardListFunc.Func2(put)] = 1 if mark == "X" else 2
+            if put=="die":
+                UTTT.play=0
+                break
             if rules.theWinner(getattr(boardList, "bL"+str(put)[0])) != 0:
                 for x in range(1, 10):
                     setattr(board,"b"+str(put)[0]+str(x), X[-x] if rules.theWinner(getattr(boardList, "bL"+str(put)[0])) == 1 else O[-x])
