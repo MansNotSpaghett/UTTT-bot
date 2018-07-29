@@ -85,12 +85,12 @@ so selecting "1" would select the top left board. the same thing applies for the
             await ext.channel.send("\n{}s turn!\n".format("X" if a%2==0 else "O"))
             await ext.channel.send("Where do you want to put your mark?")
             put=await bot.wait_for("message", check=lambda msg: msg.author != bot.user)
-            ext.channel.send(put)
+            await ext.channel.send(put)
+            put=put.content
             if put=="die":
                 UTTT.play=0
                 break
-            put=put.content
-            ext.channel.send(put)
+            await ext.channel.send(put)
             try:
                 print("here")
                 put = int(put)
