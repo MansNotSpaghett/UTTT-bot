@@ -88,6 +88,9 @@ so selecting "1" would select the top left board. the same thing applies for the
             await ext.channel.send(put)
             put=put.content
             if put=="die":
+                for x in range(1,10):
+                    for y in range(1,10):
+                        setattr(board,"b"+str(x)+str(y),"   ")
                 UTTT.play=0
                 break
             await ext.channel.send(put)
@@ -189,6 +192,9 @@ so selecting "1" would select the top left board. the same thing applies for the
             getattr(boardList, "bL"+str(put)[0])[boardListFunc.Func1(put)][boardListFunc.Func2(put)] = 1 if mark == "X" else 2
             if put.content=="die":
                 UTTT.play=0
+                for x in range(1,10):
+                    for y in range(1,10):
+                        setattr(board,"b"+str(x)+str(y),"   ")
                 break
             if rules.theWinner(getattr(boardList, "bL"+str(put)[0])) != 0:
                 for x in range(1, 10):
