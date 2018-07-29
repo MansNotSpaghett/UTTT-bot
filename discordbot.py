@@ -30,9 +30,9 @@ async def UTTT(ext,z,x=[],O=O,X=X,T=T):
         await ext.channel.send("Do you know the controls? [Y/N]: ")
     elif UTTT.counter%2==1:
         if z=="Y":
-                doThey="Y"
-                print("a")
-                UTTT.play=1
+            doThey="Y"
+            print("a")
+            UTTT.play=1
         elif z=="N":
             doThey="N"
             print("b")
