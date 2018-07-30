@@ -68,6 +68,12 @@ so selecting "1" would select the top left board. the same thing applies for the
                 canPlayAnywhere = True
             if rules.theWinner(boardList.bLU) != 0:
                 await ext.channel.send("The winner is {}!".format("X" if rules.theWinner(boardList.bLU) == 1 else "O"))
+                UTTT.play=0
+                for x in range(1,10):
+                    setattr(boardList,"bL"+str(x),[[0,0,0],[0,0,0],[0,0,0]])
+                    for y in range(1,10):
+                        setattr(board,"b"+str(x)+str(y),"   ")
+                setattr(boardList,"bLU",[[0,0,0],[0,0,0],[0,0,0]])
                 break
             for x in boardList.bLU:
                 for y in x:
@@ -75,6 +81,12 @@ so selecting "1" would select the top left board. the same thing applies for the
                         zU += 1
                 if zU == 9:
                     await ext.channel.send("It's a tie!")
+                    UTTT.play=0
+                    for x in range(1,10):
+                        setattr(boardList,"bL"+str(x),[[0,0,0],[0,0,0],[0,0,0]])
+                        for y in range(1,10):
+                            setattr(board,"b"+str(x)+str(y),"   ")
+                    setattr(boardList,"bLU",[[0,0,0],[0,0,0],[0,0,0]])
                     break
             a += 1
             await ext.channel.send(board.board())
@@ -85,7 +97,6 @@ so selecting "1" would select the top left board. the same thing applies for the
             await ext.channel.send("\n{}s turn!\n".format("X" if a%2==0 else "O"))
             await ext.channel.send("Where do you want to put your mark?")
             put=await bot.wait_for("message", check=lambda msg: msg.author != bot.user)
-            await ext.channel.send(put)
             put=put.content
             if put=="die":
                 await ext.channel.send("ded af")
@@ -96,11 +107,8 @@ so selecting "1" would select the top left board. the same thing applies for the
                 setattr(boardList,"bLU",[[0,0,0],[0,0,0],[0,0,0]])
                 UTTT.play=0
                 break
-            await ext.channel.send(put)
             try:
-                await ext.channel.send("here")
                 put = int(put)
-                await ext.channel.send("and here")
             except:
                 pass
             if a % 2==0:
@@ -108,7 +116,6 @@ so selecting "1" would select the top left board. the same thing applies for the
             else:
                 mark = " O "
             while isinstance(put, str) or (str(put)[0] != nM and nM != None) or all(elem not in [int(str(x)+str(y)) for x in range(1,10) for y in range(1,10)] for elem in [put]) or len(str(put)) != 2 or getattr(boardList, "bL"+str(put)[0])[boardListFunc.Func1(put)][boardListFunc.Func2(put)] != 0 or boardList.bLU[boardListFunc.FuncU1(put)][boardListFunc.FuncU2(put)] != 0 or rules.theWinner(getattr(boardList, "bL"+str(put)[0])) != 0:
-                await ext.channel.send("why am i here?")
                 try:
                     if canPlayAnywhere == True:
                         if isinstance(put, str):
@@ -192,7 +199,6 @@ so selecting "1" would select the top left board. the same thing applies for the
                     put = int(put)
                 except:
                     pass
-            await ext.channel.send("get debugged")
             setattr(board,"b"+str(put),mark)   
             getattr(boardList, "bL"+str(put)[0])[boardListFunc.Func1(put)][boardListFunc.Func2(put)] = 1 if mark == "X" else 2
             if put=="die":
@@ -204,7 +210,6 @@ so selecting "1" would select the top left board. the same thing applies for the
                         setattr(board,"b"+str(x)+str(y),"   ")
                 setattr(boardList,"bLU",[[0,0,0],[0,0,0],[0,0,0]])
                 break
-            await ext.channel.send("here too")
             if rules.theWinner(getattr(boardList, "bL"+str(put)[0])) != 0:
                 for x in range(1, 10):
                     setattr(board,"b"+str(put)[0]+str(x), X[-x] if rules.theWinner(getattr(boardList, "bL"+str(put)[0])) == 1 else O[-x])
