@@ -213,10 +213,10 @@ so selecting "1" would select the top left board. the same thing applies for the
             if rules.theWinner(getattr(boardList, "bL"+str(put)[0])) != 0:
                     await ext.channel.send(getattr(board,"b"+str(put)[0]))
                     for x in range(1, 10):
-                    if rules.theWinner(getattr(boardList, "bL"+str(put)[0])) == 1:
-                        setattr(board,"b"+str(put)[0]+str(x), X[-x])
-                    else:
-                        setattr(board,"b"+str(put)[0]+str(x), O[-x])
+                        if rules.theWinner(getattr(boardList, "bL"+str(put)[0])) == 1:
+                            setattr(board,"b"+str(put)[0]+str(x), X[-x])
+                        else:
+                            setattr(board,"b"+str(put)[0]+str(x), O[-x])
                 boardList.bLU[boardListFunc.FuncU1(put)][boardListFunc.FuncU2(put)] = 1 if mark == "X" else 2
                 await ext.channel.send(mark)
                 finished.append(str(put)[0])
