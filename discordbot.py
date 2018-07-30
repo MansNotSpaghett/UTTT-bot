@@ -60,7 +60,7 @@ so selecting "1" would select the top left board. the same thing applies for the
         put="21"
         a = 1
         canPlayAnywhere = False
-        """while True:
+        while True:
             zU = 0
             z = 0
             nM = nextMove.nM(put)
@@ -92,7 +92,7 @@ so selecting "1" would select the top left board. the same thing applies for the
                 for x in range(1,10):
                     for y in range(1,10):
                         setattr(board,"b"+str(x)+str(y),"   ")
-                        setattr((boardList,"bL"+str(x),[[0,0,0],[0,0,0],[0,0,0]])
+                        setattr(boardList,"bL"+str(x),[[0,0,0],[0,0,0],[0,0,0]])
                 setattr(boardList,"bLU",[[0,0,0],[0,0,0],[0,0,0]])
                 UTTT.play=0
                 break
@@ -212,7 +212,7 @@ so selecting "1" would select the top left board. the same thing applies for the
                 for x in getattr(boardList, "bL"+str(put)[0]):
                     for y in x:
                         if y != 0:
-                            z += 1"""
+                            z += 1
                 if z == 9:
                     boardList.bLU[boardListFunc.FuncU1(put)][boardListFunc.FuncU2(put)] = 3
                     for y in range(9):
