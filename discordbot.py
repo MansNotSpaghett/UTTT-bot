@@ -19,7 +19,7 @@ async def on_ready():
     print('Logged in as')
     print(bot.user.name)
     print(bot.user.id) 
-    print('------')
+    print('-------')
 @bot.command()
 async def UTTT(ext,z,x=[],O=O,X=X,T=T):
     if ext.author == bot.user:
