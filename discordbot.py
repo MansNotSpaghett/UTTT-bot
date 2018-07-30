@@ -191,6 +191,7 @@ so selecting "1" would select the top left board. the same thing applies for the
                     put = int(put)
                 except:
                     pass
+            await ext.channel.send("get debugged")
             setattr(board,"b"+str(put),mark)   
             getattr(boardList, "bL"+str(put)[0])[boardListFunc.Func1(put)][boardListFunc.Func2(put)] = 1 if mark == "X" else 2
             if put.content=="die":
