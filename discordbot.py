@@ -92,6 +92,8 @@ so selecting "1" would select the top left board. the same thing applies for the
                 for x in range(1,10):
                     for y in range(1,10):
                         setattr(board,"b"+str(x)+str(y),"   ")
+                        setattr((boardList,"bL"+str(x),[[0,0,0],[0,0,0],[0,0,0]])
+                setattr(boardList,"bLU",[[0,0,0],[0,0,0],[0,0,0]])
                 UTTT.play=0
                 break
             await ext.channel.send(put)
@@ -196,6 +198,8 @@ so selecting "1" would select the top left board. the same thing applies for the
                 for x in range(1,10):
                     for y in range(1,10):
                         setattr(board,"b"+str(x)+str(y),"   ")
+                        setattr((boardList,"bL"+str(x),[[0,0,0],[0,0,0],[0,0,0]])
+                setattr(boardList,"bLU",[[0,0,0],[0,0,0],[0,0,0]])
                 break
             if rules.theWinner(getattr(boardList, "bL"+str(put)[0])) != 0:
                 for x in range(1, 10):
