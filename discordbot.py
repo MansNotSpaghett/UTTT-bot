@@ -5,15 +5,15 @@ import rules, board, boardList, boardListFunc, nextMove
 bot = commands.Bot(command_prefix="$")
 import os
 doThey=None
-O = ["/", "-","\\",
-     "|", " ", "|",
-     "\\","-", "/"]
-X = ["\\", " ", "/",
-     " ", "☓", " ",
-      "/", " ", "\\"]
-T = ["-","-","-",
-     " ", "|", " ",
-     " ", "|", " "]
+O = [" / ", " - "," \\ ",
+     " | ", "   ", " | ",
+     " \\ "," - ", " / "]
+X = [" \\ ", "   ", " / ",
+     "   ", " ☓ ", "   ",
+      " / ", "   ", " \\ "]
+T = [" - "," - "," - ",
+     "   ", " | ", "   ",
+     "   ", " | ", "   "]
 @bot.event
 async def on_ready():
     print('Logged in as')
