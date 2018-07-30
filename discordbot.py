@@ -202,6 +202,7 @@ so selecting "1" would select the top left board. the same thing applies for the
                         setattr(board,"b"+str(x)+str(y),"   ")
                 #setattr(boardList,"bLU",[[0,0,0],[0,0,0],[0,0,0]])
                 break
+            await ext.channel.send("here too")
             if rules.theWinner(getattr(boardList, "bL"+str(put)[0])) != 0:
                 for x in range(1, 10):
                     setattr(board,"b"+str(put)[0]+str(x), X[-x] if rules.theWinner(getattr(boardList, "bL"+str(put)[0])) == 1 else O[-x])
