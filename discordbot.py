@@ -93,7 +93,7 @@ so selecting "1" would select the top left board. the same thing applies for the
                     setattr(boardList,"bL"+str(x),[[0,0,0],[0,0,0],[0,0,0]])
                     for y in range(1,10):
                         setattr(board,"b"+str(x)+str(y),"   ")
-                #setattr(boardList,"bLU",[[0,0,0],[0,0,0],[0,0,0]])
+                setattr(boardList,"bLU",[[0,0,0],[0,0,0],[0,0,0]])
                 UTTT.play=0
                 break
             await ext.channel.send(put)
@@ -195,12 +195,13 @@ so selecting "1" would select the top left board. the same thing applies for the
             setattr(board,"b"+str(put),mark)   
             getattr(boardList, "bL"+str(put)[0])[boardListFunc.Func1(put)][boardListFunc.Func2(put)] = 1 if mark == "X" else 2
             if put.content=="die":
+                await ext.channel.send("ded af")
                 UTTT.play=0
                 for x in range(1,10):
                     setattr(boardList,"bL"+str(x),[[0,0,0],[0,0,0],[0,0,0]])
                     for y in range(1,10):
                         setattr(board,"b"+str(x)+str(y),"   ")
-                #setattr(boardList,"bLU",[[0,0,0],[0,0,0],[0,0,0]])
+                setattr(boardList,"bLU",[[0,0,0],[0,0,0],[0,0,0]])
                 break
             await ext.channel.send("here too")
             if rules.theWinner(getattr(boardList, "bL"+str(put)[0])) != 0:
