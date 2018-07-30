@@ -185,7 +185,8 @@ so selecting "1" would select the top left board. the same thing applies for the
                     await ext.channel.send("What you typed wasn't what the computer expected as a place. Try again")
                     await ext.channel.send("Where do you wanna put your mark? (e.g: 99 for the right-down right-down place as in 9th TTT table and 9th place) ")
                     put=await bot.wait_for("message", check=lambda msg: msg.author != bot.user)
-                if put.content=="die":
+                put = put.content
+                if put=="die":
                     break
                 try:
                     put = int(put)
@@ -194,7 +195,7 @@ so selecting "1" would select the top left board. the same thing applies for the
             await ext.channel.send("get debugged")
             setattr(board,"b"+str(put),mark)   
             getattr(boardList, "bL"+str(put)[0])[boardListFunc.Func1(put)][boardListFunc.Func2(put)] = 1 if mark == "X" else 2
-            if put.content=="die":
+            if put=="die":
                 await ext.channel.send("ded af")
                 UTTT.play=0
                 for x in range(1,10):
