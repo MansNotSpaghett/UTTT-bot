@@ -233,5 +233,6 @@ so selecting "1" would select the top left board. the same thing applies for the
                         setattr(board,"b"+str(put)[0]+str(y+1), T[y])
                     setattr(boardList,"bL"+str(put)[0], [[1,1,1],[1,1,1],[1,1,1]])   
                     finished.append(str(put)[0])
+            await ext.channel.send(getattr(boardList,"bL"+str(put)[0]))
             canPlayAnywhere = False
 bot.run(os.environ['BOT_TOKEN'])
