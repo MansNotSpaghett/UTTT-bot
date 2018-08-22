@@ -4,7 +4,7 @@ import asyncio
 import rules, board, boardList, boardListFunc, nextMove
 bot = commands.Bot(command_prefix="$")
 import os
-doThey=None
+doThey=Nonesyntaxerror
 O = [" / ", " - "," \\ ",
      " | ", "   ", " | ",
      " \\ "," - ", " / "]
